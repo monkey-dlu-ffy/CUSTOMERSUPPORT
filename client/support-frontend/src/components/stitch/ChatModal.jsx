@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, "");
 import AgentReplyBox from '../AgentReplyBox';
 import socket from '../../utils/socket';
 

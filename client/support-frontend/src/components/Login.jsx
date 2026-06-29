@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthShell from './auth/AuthShell.jsx';
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL.replace(/\/$/, "");
 // ─── tiny building-block icon ───────────────────────────────────────────────
 const OrgIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
