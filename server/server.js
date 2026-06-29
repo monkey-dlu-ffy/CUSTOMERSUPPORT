@@ -27,17 +27,21 @@ app.use(express.json());
 // Falls back to localhost for local development
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
-app.use(cors({ origin: CLIENT_URL }));
+app.use(cors({
+  origin: CLIENT_URL,
+  credentials: true,
+}));
 
 // --- HTTP SERVER & SOCKET.IO SETUP ---
 // We must wrap the Express app in a standard Node HTTP server for WebSockets
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: { 
+  cors: {
     origin: CLIENT_URL,
-    methods: ["GET", "POST", "PUT"] 
-  }
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
+  },
 });
 
 // Map to track which Agent (User ID) is using which Socket ID
